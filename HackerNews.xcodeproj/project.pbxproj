@@ -82,14 +82,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8F11CB9B22AD990D0033BDBB /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				8FB4AB7222AD7DB200363A7C /* StoryStore.swift */,
-			);
-			path = Stores;
-			sourceTree = "<group>";
-		};
 		8F2953A722AD6DF7000625CB = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				8FB4AB6E22AD797D00363A7C /* Models */,
-				8F11CB9B22AD990D0033BDBB /* Stores */,
 				8FB4AB6D22AD796D00363A7C /* Supporting Views */,
 				8F2953B322AD6DF7000625CB /* AppDelegate.swift */,
 				8F2953B522AD6DF7000625CB /* SceneDelegate.swift */,
@@ -165,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				8F78A22722ADA3B000DF08A5 /* Story.swift */,
+				8FB4AB7222AD7DB200363A7C /* StoryStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
