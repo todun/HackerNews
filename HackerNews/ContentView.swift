@@ -9,12 +9,6 @@
 import SwiftUI
 
 struct ContentView : View {
-    enum FeedType: String, CaseIterable {
-        case top = "Top"
-        case new = "New"
-        case best = "Best"
-    }
-    
     @ObjectBinding var store = StoryStore()
     @State var feedType: FeedType = .top
     

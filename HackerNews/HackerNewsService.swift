@@ -10,9 +10,9 @@ import Foundation
 import Alamofire
 
 enum FeedType: String, CaseIterable {
-    case top = "topstories"
-    case new = "newstories"
-    case best = "beststories"
+    case top = "Top"
+    case new = "New"
+    case best = "Best"
 }
 
 struct HackerNewsService {
@@ -20,7 +20,7 @@ struct HackerNewsService {
     /// - Parameter feed: Feed type
     /// - Parameter completionHandler
     private func fetchStoryIds(feed: FeedType, completionHandler: @escaping ([Int]?, Error?) -> Void) {
-        AF.request("https://hacker-news.firebaseio.com/v0/\(feed.rawValue).json").responseJSON { response in
+        AF.request("https://hacker-news.firebaseio.com/v0/\(feed.rawValue.lowercased())stories.json").responseJSON { response in
             switch response.result {
             case .success(let data):
                 guard let ids = data as? [Int] else { return }

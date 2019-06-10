@@ -17,46 +17,19 @@ final class StoryStore: BindableObject {
         didSet { didChange.send(self) }
     }
     
-    func fetchStories(feed: ContentView.FeedType) {
+    func fetchStories(feed: FeedType) {
         let hackerNewsService = HackerNewsService()
-
-        switch feed {
-        case .top:
-            hackerNewsService.fetchStories(feed: .top) { (stories, error) in
-                guard error == nil else {
-                    return
-                }
-                
-                guard let stories = stories else {
-                    return
-                }
-                
-                self.stories = stories
+        
+        hackerNewsService.fetchStories(feed: feed) { (stories, error) in
+            guard error == nil else {
+                return
             }
-        case .new:
-            hackerNewsService.fetchStories(feed: .new) { (stories, error) in
-                guard error == nil else {
-                    return
-                }
-                
-                guard let stories = stories else {
-                    return
-                }
-                
-                self.stories = stories
+            
+            guard let stories = stories else {
+                return
             }
-        case .best:
-            hackerNewsService.fetchStories(feed: .best) { (stories, error) in
-                guard error == nil else {
-                    return
-                }
-                
-                guard let stories = stories else {
-                    return
-                }
-                
-                self.stories = stories
-            }
+            
+            self.stories = stories
         }
     }
     
