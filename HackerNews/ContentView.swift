@@ -11,7 +11,8 @@ import SwiftUI
 struct ContentView : View {
     enum FeedType: String, CaseIterable {
         case top = "Top"
-        case newest = "Newest"
+        case new = "New"
+        case best = "Best"
     }
     
     @ObjectBinding var store = StoryStore()
@@ -34,7 +35,7 @@ struct ContentView : View {
             }
             .navigationBarTitle(Text("Hacker News"))
             .navigationBarItems(trailing: Button(action: {
-                    self.store.fetchStories()
+                self.store.fetchStories(feed: self.$feedType.value)
             }) {
                 Image(systemName: "arrow.clockwise")
                     .foregroundColor(.blue)

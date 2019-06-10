@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Story: Identifiable {
+struct Story: Identifiable, Decodable {
     let id: Int
     let by: String
     let score: Int

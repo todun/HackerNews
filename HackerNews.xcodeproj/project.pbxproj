@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,9 @@
 		8F2953D622AD6DFA000625CB /* HackerNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2953D522AD6DFA000625CB /* HackerNewsUITests.swift */; };
 		8F78A22822ADA3B000DF08A5 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F78A22722ADA3B000DF08A5 /* Story.swift */; };
 		8F7FE12822AD774900EBD44D /* StoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7FE12722AD774900EBD44D /* StoryRow.swift */; };
+		8F9B9D8322ADC23800CD297F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8F9B9D8222ADC23800CD297F /* Alamofire */; };
 		8FB4AB7322AD7DB200363A7C /* StoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB4AB7222AD7DB200363A7C /* StoryStore.swift */; };
+		8FBD78C522ADB81300420163 /* HackerNewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBD78C422ADB81300420163 /* HackerNewsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 		8F78A22722ADA3B000DF08A5 /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		8F7FE12722AD774900EBD44D /* StoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryRow.swift; sourceTree = "<group>"; };
 		8FB4AB7222AD7DB200363A7C /* StoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryStore.swift; sourceTree = "<group>"; };
+		8FBD78C422ADB81300420163 /* HackerNewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F9B9D8322ADC23800CD297F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +113,7 @@
 				8FB4AB6D22AD796D00363A7C /* Supporting Views */,
 				8F2953B322AD6DF7000625CB /* AppDelegate.swift */,
 				8F2953B522AD6DF7000625CB /* SceneDelegate.swift */,
+				8FBD78C422ADB81300420163 /* HackerNewsService.swift */,
 				8F2953B722AD6DF7000625CB /* ContentView.swift */,
 				8F2953B922AD6DF9000625CB /* Assets.xcassets */,
 				8F2953BE22AD6DF9000625CB /* LaunchScreen.storyboard */,
@@ -177,6 +182,9 @@
 			dependencies = (
 			);
 			name = HackerNews;
+			packageProductDependencies = (
+				8F9B9D8222ADC23800CD297F /* Alamofire */,
+			);
 			productName = HackerNews;
 			productReference = 8F2953B022AD6DF7000625CB /* HackerNews.app */;
 			productType = "com.apple.product-type.application";
@@ -250,6 +258,7 @@
 			);
 			mainGroup = 8F2953A722AD6DF7000625CB;
 			packageReferences = (
+				8F9B9D8122ADC23800CD297F /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 8F2953B122AD6DF7000625CB /* Products */;
 			projectDirPath = "";
@@ -294,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FBD78C522ADB81300420163 /* HackerNewsService.swift in Sources */,
 				8F2953B422AD6DF7000625CB /* AppDelegate.swift in Sources */,
 				8F2953B622AD6DF7000625CB /* SceneDelegate.swift in Sources */,
 				8F7FE12822AD774900EBD44D /* StoryRow.swift in Sources */,
@@ -618,6 +628,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8F9B9D8122ADC23800CD297F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = exactVersion;
+				version = "5.0.0-beta.5";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8F9B9D8222ADC23800CD297F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F9B9D8122ADC23800CD297F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8F2953A822AD6DF7000625CB /* Project object */;
 }
