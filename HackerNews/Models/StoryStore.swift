@@ -16,9 +16,14 @@ final class StoryStore: BindableObject {
     private(set) var stories = [Story]() {
         didSet { didChange.send(self) }
     }
+    private(set) var isLoading: Bool = false {
+        didSet { didChange.send(self) }
+    }
     
     func fetchStories(feed: FeedType) {
         let hackerNewsService = HackerNewsService()
+        
+        isLoading = true
         
         hackerNewsService.fetchStories(feed: feed) { (stories, error) in
             guard error == nil else {
@@ -30,6 +35,7 @@ final class StoryStore: BindableObject {
             }
             
             self.stories = stories
+            self.isLoading = false
         }
     }
     

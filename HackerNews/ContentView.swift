@@ -10,7 +10,11 @@ import SwiftUI
 
 struct ContentView : View {
     @ObjectBinding var store = StoryStore()
-    @State var feedType: FeedType = .top
+    @State var feedType: FeedType = .top {
+        didSet {
+            self.store.fetchStories(feed: self.$feedType.value)
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -26,15 +30,21 @@ struct ContentView : View {
                         StoryRow(story: story)
                     }
                 }
-            }
-            .navigationBarTitle(Text("Hacker News"))
-            .navigationBarItems(trailing: Button(action: {
-                self.store.fetchStories(feed: self.$feedType.value)
-            }) {
-                Image(systemName: "arrow.clockwise")
-                    .foregroundColor(.blue)
-                    .accessibility(label: Text("Reload"))
                 }
+                .navigationBarTitle(Text("Hacker News"))
+                .navigationBarItems(trailing: Button(action: {
+                    guard !self.store.isLoading else { return }
+                    
+                    self.store.fetchStories(feed: self.$feedType.value)
+                }) {
+                    if store.isLoading {
+                        ActivityIndicatorView(style: .medium)
+                    } else {
+                        Image(systemName: "arrow.clockwise")
+                            .foregroundColor(.blue)
+                            .accessibility(label: Text("Reload"))
+                    }
+                    }
             )
         }
     }
