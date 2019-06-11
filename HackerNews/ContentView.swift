@@ -22,7 +22,7 @@ struct ContentView : View {
                 }
                 
                 ForEach(store.stories) { story in
-                    NavigationButton(destination: Text("")) {
+                    NavigationButton(destination: StoryWebView(story: story)) {
                         StoryRow(story: story)
                     }
                 }
