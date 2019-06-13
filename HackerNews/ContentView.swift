@@ -30,7 +30,6 @@ struct ContentView : View {
                 .navigationBarItems(trailing: Button(action: {
                     guard !self.store.isLoading else { return }
                     
-                    self.store.stories.removeAll()
                     self.store.fetchStories(feed: self.$store.feedType.value)
                 }) {
                     if store.isLoading {
