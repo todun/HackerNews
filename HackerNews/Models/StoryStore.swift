@@ -13,9 +13,17 @@ import Combine
 final class StoryStore: BindableObject {
     var didChange = PassthroughSubject<StoryStore, Never>()
     
-    private(set) var stories = [Story]() {
+    var feedType: FeedType = .top {
+        didSet {
+            stories.removeAll()
+            fetchStories(feed: feedType)
+        }
+    }
+    
+    var stories = [Story]() {
         didSet { didChange.send(self) }
     }
+    
     private(set) var isLoading: Bool = false {
         didSet { didChange.send(self) }
     }
@@ -40,6 +48,6 @@ final class StoryStore: BindableObject {
     }
     
     init() {
-        fetchStories(feed: .top)
+        fetchStories(feed: feedType)
     }
 }

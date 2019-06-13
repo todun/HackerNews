@@ -10,18 +10,13 @@ import SwiftUI
 
 struct ContentView : View {
     @ObjectBinding var store = StoryStore()
-    @State var feedType: FeedType = .top {
-        didSet {
-            self.store.fetchStories(feed: self.$feedType.value)
-        }
-    }
     
     var body: some View {
         NavigationView {
             List {
-                SegmentedControl(selection: $feedType) {
+                SegmentedControl(selection: $store.feedType) {
                     ForEach(FeedType.allCases.identified(by: \.self)) { type in
-                        Text(type.rawValue)
+                        Text(type.rawValue).tag(type)
                     }
                 }
                 
@@ -35,7 +30,8 @@ struct ContentView : View {
                 .navigationBarItems(trailing: Button(action: {
                     guard !self.store.isLoading else { return }
                     
-                    self.store.fetchStories(feed: self.$feedType.value)
+                    self.store.stories.removeAll()
+                    self.store.fetchStories(feed: self.$store.feedType.value)
                 }) {
                     if store.isLoading {
                         ActivityIndicatorView(style: .medium)
