@@ -35,10 +35,12 @@ final class StoryStore: BindableObject {
         
         hackerNewsService.fetchStories(feed: feed) { (stories, error) in
             guard error == nil else {
+                self.isLoading = false
                 return
             }
             
             guard let stories = stories else {
+                self.isLoading = false
                 return
             }
             
