@@ -45,6 +45,9 @@ struct HackerNewsService {
         }
     }
     
+    /// Fetch's stories from feed
+    /// - Parameter feed: Feed type
+    /// - Parameter completionHandler
     func fetchStories(feed: FeedType, completionHandler: @escaping ([Story]?, Error?) -> Void) {
         fetchStoryIds(feed: feed) { (ids, error) in
             guard error == nil else {
